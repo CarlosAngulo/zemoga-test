@@ -1,17 +1,9 @@
 const router = require('express-promise-router')();
+const mdAuth = require('../middlewares/auth');
 
 const { index, addVote } = require('../controllers/public-figure');
 
 router.get('/', index);
-router.post('/:figureId', addVote)
-
-// router.post('/', (req, res) => {
-//     const {title, director, year, rating } = req.body;
-//     if (title && director ) {
-//         res.send('saved');
-//     } else {
-//         res.send('Wrong Request');
-//     }
-// })
+router.post('/:figureId', mdAuth.verifyToken, addVote);
 
 module.exports = router;

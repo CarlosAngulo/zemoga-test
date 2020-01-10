@@ -13,7 +13,7 @@ const figureSchema = new Schema({
         ref: 'categories'
     },
     update: Date,
-    image: String
+    picture: String
 })
 
 module.exports = mongoose.model('public-figure', figureSchema);
