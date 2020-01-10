@@ -12,7 +12,8 @@ const figureSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'categories'
     },
-    update: Date
+    update: Date,
+    image: String
 })
 
 module.exports = mongoose.model('public-figure', figureSchema);
