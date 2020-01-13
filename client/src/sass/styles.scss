@@ -1,0 +1,34 @@
+@import './variables';
+@import './mixins';
+
+html {
+  @include box-sizing(border-box);
+  color: $maintextcolor;
+}
+*,
+*:after,
+*::before {
+  @include box-sizing (inherit);
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 21px;
+  margin: 0;
+}
+
+.container {
+  margin: auto;
+  padding: 15px;
+  @include tablet () {
+    width: 90%;
+    padding: 0;
+  }
+  @include desktop () {
+    max-width: 1124px;
+  }
+  @include maxscreenwidth () {
+    max-width: 1600px;
+  }
+}

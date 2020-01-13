@@ -1,0 +1,32 @@
+:host {
+  padding: 30px 0;
+  display: block;
+}
+
+.text-vote {
+  display: flex;
+  background-color: #ebebeb;
+  padding: 30px 40px;
+  align-items: center;
+}
+
+.titles {
+    flex: 0 0 240px;
+}
+
+h3 {
+    font-size: 23px;
+    font-weight: 400;
+    margin: 0;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0;
+}
+
+p {
+  margin: 0;
+  font-size: 17px;
+}

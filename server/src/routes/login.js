@@ -13,6 +13,9 @@ app.post('/', (req, res) => {
     
     User.findOne({ email: body.email }, (err, userDB) => {
         if(err) {
+            
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
             return res.status(500).json({
                 success: false,
                 message: 'Error searching the user',
@@ -20,7 +23,10 @@ app.post('/', (req, res) => {
             });
         }
 
-        if ( !userDB || !bcrypt.compareSync( body.password, userDB.password) ) {
+        if ( !userDB || !bcrypt.compareSync( body.password, userDB.password) ) {        
+            
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
             return res.status(400).json({
                 success: false,
                 message: 'User or password not valid'
@@ -31,7 +37,9 @@ app.post('/', (req, res) => {
         userDB.password = ':)';
         const token = jwt.sign({ user: userDB }, SEED, {expiresIn: 1800})
 
-        res.status(200).json({
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+        return res.status(200).json({
             ok: true,
             user: userDB,
             token,

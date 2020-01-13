@@ -1,0 +1,22 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+h2 {
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.votes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+app-vote-card {
+  margin-bottom: 20px;
+  @include tablet () {
+    margin-bottom: 30px;
+    flex: 0 0 calc(50% - 15px);
+  }
+}

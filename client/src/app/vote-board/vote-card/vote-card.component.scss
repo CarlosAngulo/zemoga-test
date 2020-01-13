@@ -1,0 +1,78 @@
+@import '../../../sass/mixins';
+@import '../../../sass/variables';
+
+:host {
+  display: block;
+  color: white;
+  font-weight: 400;
+}
+
+.vote-card {
+  background-position: center center;
+  background-size: cover;
+}
+
+.description {
+  padding: 350px 40px 40px 50px;
+  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+  position: relative;
+  .thumbs {
+    position: absolute;
+    top: 380px;
+    left: 0;
+    background-color: rgba($downColor, 0.8);
+    padding: 10px;
+    &.up {
+      background-color: rgba($upColor, 0.8);
+    }
+  }
+}
+
+.likes {
+  display: flex;
+
+  div {
+    flex: 0 0 50%;
+    text-align: center;
+    padding: 15px;
+    white-space: nowrap;
+    svg {
+      font-size: 25px;
+    }
+  }
+  .like {
+    background-color: rgba($upColor, 0.8 );
+    text-align: left;
+  }
+  .nolike {
+    background-color: rgba($downColor ,0.8);
+    text-align: right;
+  }
+}
+
+.vote-box {
+  display: flex;
+  align-items: center;
+  a.vote-now {
+    padding: 10px;
+    color: white;
+    border: 2px solid white;
+    text-decoration: none;
+  }
+  a.up, a.down {
+    background-color: $upColor;
+    padding: 10px;
+    margin-right: 15px;
+    display: block;
+    &.active {
+      border: 2px solid white;
+    }
+    svg {
+      color: white;
+    }
+  }
+  a.down {
+    background-color: $downColor;
+  }
+}

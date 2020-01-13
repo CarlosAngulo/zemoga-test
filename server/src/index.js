@@ -11,6 +11,7 @@ const userRoutes = require('./routes/user');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/rest-api-votes', { 
+// mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds141631.mlab.com:41631/heroku_1jtbq22b', { 
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -28,24 +29,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Routes
+app.use(function(req, res, next) {
+    var allowedOrigins = ['http://127.0.0.1:4200', 'http://localhost'];
+    var origin = req.headers.origin;
+    if(allowedOrigins.indexOf(origin) > -1){
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', true);
+    console.log('carlos angulo');
+    
+    return next();
+});
 app.use(require('./routes/index'));
 app.use('/api/figures', figuresRoutes);
 app.use('/api/login', loginRoutes);
 app.use('/api/user', userRoutes);
 
+
 // Starting the server
 app.listen(app.get('port'), () => {
     console.log('Server running at port 3000');
 });
-
-// Votar por figura POST vote_down
-// http://localhost:3000/api/figures/5e175d09a41a592530a96d82?token=...
-
-// Login Usuario POST
-// http://localhost:3000/api/login
-
-// Nuevo Usuario POST name email password
-// http://localhost:3000/api/user
-
-// Get Users GET
-// http://localhost:3000/api/user

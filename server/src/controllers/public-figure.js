@@ -5,6 +5,7 @@ module.exports = {
     
     index: async (req, res, next) => {
         const figures = await Figure.find({}).populate('category');
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).json(figures);
     },
 
