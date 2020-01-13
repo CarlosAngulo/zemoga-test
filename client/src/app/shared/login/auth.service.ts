@@ -9,12 +9,17 @@ import { User } from '../user.interface';
 })
 export class AuthService {
 
-  getFiguresURL = environment.votesAPI + 'login';
+  loginURL = environment.votesAPI + 'login';
+  registerURL = environment.votesAPI + 'user';
 
   constructor( private http: HttpClient) { }
 
   loginUser( user: User ): Observable<User> {
-    console.log('sadfasfdsfs');
-    return this.http.post<User>(this.getFiguresURL, user);
+    return this.http.post<User>(this.loginURL, user);
   }
+
+  registerUser( user: User ): Observable<User> {
+    return this.http.post<User>(this.registerURL, user);
+  }
+
 }

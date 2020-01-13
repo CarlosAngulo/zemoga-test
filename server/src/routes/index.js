@@ -3,7 +3,7 @@ const router = Router()
 
 router.get('/', (req, res) => {
     const data = {
-        name: 'Carlos'
+        name: 'Votes app by Carlos Angulo'
     }
     res.json(data);
 });

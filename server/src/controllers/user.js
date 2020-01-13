@@ -1,5 +1,8 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const SEED = require('../config/config').SEED;
 
 module.exports = {
 
@@ -42,11 +45,16 @@ module.exports = {
                     errors: err
                 })
             }
+
+            const token = jwt.sign({ user: savedUser }, SEED, {expiresIn: 1800})
             
             res.status(201).json({
-                ok: true,
-                user: savedUser.email,
-                userToken: req.user
+                success: true,
+                user: {
+                    name: savedUser.name,
+                    email: savedUser.email,
+                },
+                token
             })
     
         })

@@ -1,20 +1,28 @@
-<div class="overlay">
+<div class="overlay" *ngIf="showForm">
   <div class="modal">
     <div class="tabs">
       <ul>
-        <li (click)="changeState(0)" [ngClass]="{'active': currentState == 0}">Login</li>
-        <li (click)="changeState(1)" [ngClass]="{'active': currentState == 1}">Sign in</li>
+        <li (click)="changeState(0)" [ngClass]="{'active': currentForm == 0}">Login</li>
+        <li (click)="changeState(1)" [ngClass]="{'active': currentForm == 1}">Sign in</li>
       </ul>
     </div>
     <div class="login-content">
-        <p>{{states.message[currentState]}}</p>
+        <p>{{states.message[currentForm]}}</p>
 
-        <!-- <input type="text" placeholder="email" id="email" [(ngModel)]="user.email" required>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-        <input type="password" placeholder="password" id="password" [(ngModel)]="user.password" required> -->
+          <input *ngIf="currentForm == 1" type="text" placeholder="name" formControlName="name" name="name">
 
-        <button (click)="onSubmit()">{{states.button[currentState]}}</button>
-        <button class="cancel">Cancel</button>
+          <input type="text" placeholder="email" formControlName="email" name="email" required>
+
+          <input type="password" placeholder="password" formControlName="password" name="password" required>
+
+          <button type="submit">{{states.button[currentForm]}}</button>
+
+          <button class="cancel">Cancel</button>
+          
+        </form>
+
     </div>
   </div>
 </div>

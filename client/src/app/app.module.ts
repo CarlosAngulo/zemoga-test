@@ -11,6 +11,7 @@ import { VoteBoardComponent } from './vote-board/vote-board.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './shared/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LoginComponent } from './shared/login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
